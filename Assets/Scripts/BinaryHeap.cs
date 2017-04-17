@@ -22,7 +22,7 @@ public class BinaryHeap<T> where T: IComparable<T>
         int parent = index / 2;
         while (index > 1 && items[parent].CompareTo(items[index]) > 0)
         {
-            Swap(ref items[parent], ref items[index]);
+            Tools.Swap(ref items[parent], ref items[index]);
             index = parent;
             parent = index / 2;
         }
@@ -52,7 +52,7 @@ public class BinaryHeap<T> where T: IComparable<T>
                 smallest = right;
             if (index != smallest)
             {
-                Swap(ref items[index], ref items[smallest]);
+                Tools.Swap(ref items[index], ref items[smallest]);
                 index = smallest;
                 child = index * 2;
             }
@@ -99,12 +99,5 @@ public class BinaryHeap<T> where T: IComparable<T>
         }
         
         return "[" + result + "]";
-    }
-
-    static void Swap(ref T a, ref T b)
-    {
-        T tmp = a;
-        a = b;
-        b = tmp;
     }
 }

@@ -210,7 +210,7 @@ public class LevelBuilder
         InstantiateWalls(offset, root);
         InstantiateObjects(offset, root);
         InstantiateMonsters(offset, root);
-        InstantiateDebugGrid(offset, root, gridSize: 8);
+        //InstantiateDebugGrid(offset, root, gridSize: 8);
 
         foreach (var popup in popups)
             popup.transform.SetParent(root.transform);
@@ -255,7 +255,7 @@ public class LevelBuilder
                 for (int i = 0; i < count; ++i)
                 {
                     var monster = World.SpawnMonster(monStat, Iso.MapTileToWorld(x, y));
-                    monster.transform.SetParent(root.transform);
+                    //monster.transform.SetParent(root.transform);
                 }
             }
         }
@@ -491,14 +491,14 @@ public class LevelBuilder
         meshFilter.mesh = mesh;
         
         int flagIndex = 0;
-        var collisionMapIndex = Iso.Snap(Iso.MapToIso(pos));
+        var collisionMapOffset = Iso.Snap(Iso.MapToIso(pos));
         for (int dy = 2; dy > -3; --dy)
         {
             for (int dx = -2; dx < 3; ++dx)
             {
                 if ((tile.flags[flagIndex] & (1 + 8)) != 0)
                 {
-                    var subCellPos = collisionMapIndex + new Vector2i(dx, dy);
+                    var subCellPos = collisionMapOffset + new Vector2i(dx, dy);
                     CollisionMap.SetPassable(subCellPos, false);
                 }
                 ++flagIndex;

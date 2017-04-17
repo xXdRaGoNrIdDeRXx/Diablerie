@@ -4,6 +4,7 @@ using UnityEngine;
 [ExecuteInEditMode]
 [RequireComponent(typeof(Iso))]
 [RequireComponent(typeof(COFAnimator))]
+[RequireComponent(typeof(SliceItem))]
 public class Character : Entity
 {
     [System.NonSerialized]
